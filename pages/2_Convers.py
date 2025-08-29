@@ -14,6 +14,7 @@ units = {
     "°F": "Fahrenheit",
 }
 
+
 def convert_temperature(value, from_unit, to_unit):
     from_unit = units[from_unit]
     to_unit = units[to_unit]
@@ -37,6 +38,7 @@ def convert_temperature(value, from_unit, to_unit):
     elif to_unit == "Fahrenheit":
         return celsius * 9 / 5 + 32
 
+
 # state init
 for key in ["unit_a", "unit_b", "temp_a", "temp_b"]:
     if key not in st.session_state:
@@ -47,16 +49,16 @@ for key in ["unit_a", "unit_b", "temp_a", "temp_b"]:
         else:
             st.session_state[key] = 0.0
 
+
 # callback function
 def update_val():
     try:
         st.session_state.temp_b = convert_temperature(
-            st.session_state.temp_a,
-            st.session_state.unit_a,
-            st.session_state.unit_b
+            st.session_state.temp_a, st.session_state.unit_a, st.session_state.unit_b
         )
     except Exception:
         pass
+
 
 col1, col2 = st.columns(2)
 
